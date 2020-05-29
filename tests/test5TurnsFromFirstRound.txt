@@ -1,0 +1,68 @@
+# ---SAVE BEGINS---
+
+# Tile Bag
+RRYULYLRUYULBYLBUYBUBULRBLBUYRBYBUBUUULBRBRLUBYBBRRRYRYLUBULYRUBRUYRRRBLLRLULBYY
+
+# Factories
+LYUB
+BRYY
+YUYY
+ULLL
+LRLR
+
+# Centre of Table
+F
+
+# --- Player 1 ---
+
+# Name
+Alice
+
+# Pattern Lines
+.
+..
+...
+....
+.....
+
+# Wall
+.....
+.....
+.....
+.....
+.....
+
+# Floor Line
+_
+
+# Score
+0
+
+# --- Player 2 ---
+
+# Name
+Bob
+
+
+
+# Pattern Lines
+.
+..
+...
+....
+.....
+
+# Wall
+.....
+.....
+.....
+.....
+.....
+
+# Floor Line
+_
+
+# Score
+0
+
+# ---SAVE ENDS---
