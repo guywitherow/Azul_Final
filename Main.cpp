@@ -10,19 +10,27 @@
 #include "Types.h"
 #include "Tile.h"
 #include "Bag.h"
+#include <windows.h>
+#include <vld.h>
+
+
+int loadGame(Factory* (*factories)[NUM_FACTORIES], Factory* table, Bag* bag, Player* player1, Player* player2);
+void saveGame(std::string saveName, Factory* (*factories)[NUM_FACTORIES], Factory* table, Bag* bag, Player* player1, Player* player2);
+
+void game(int seed, bool load);
+void takePlayerTurn(Factory* (*factories)[NUM_FACTORIES], Factory* table, Player* player, Bag* bag, Player* player2);
 
 void printMenu();
 void printCredits();
 void printReferenceBoard();
-int loadGame(Factory* (*factories)[NUM_FACTORIES], Factory* table, Bag* bag, Player* player1, Player* player2);
-void saveGame(std::string saveName, Factory* (*factories)[NUM_FACTORIES], Factory* table, Bag* bag, Player* player1, Player* player2);
-void game(int seed, bool load);
-void takePlayerTurn(Factory* (*factories)[NUM_FACTORIES], Factory* table, Player* player, Bag* bag, Player* player2);
 void printFactories(Factory* (*factories)[NUM_FACTORIES], Factory* table);
 void printPlayerWall(Player* player);
+
 std::vector<std::string> takeUserInput();
 std::vector<std::string> takeUserInput(Factory* (*factories)[NUM_FACTORIES],
    Factory* table, Bag* bag, Player* player1, Player* player2);
+
+
 
 int main(int argc, char const *argv[])
 {
@@ -379,6 +387,11 @@ void printMenu() {
 }
 
 void printCredits() {
+
+   HANDLE hConsole;
+
+   hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+   SetConsoleTextAttribute(hConsole, FOREGROUND_BLUE | FOREGROUND_RED | FOREGROUND_INTENSITY);
    std::cout << "----------------------------------" << std::endl;
    std::cout << "Name:        Jordan Tori" << std::endl;
    std::cout << "Student ID:  s3542275" << std::endl;
@@ -390,6 +403,12 @@ void printCredits() {
    std::cout << "Student ID:  s3783428" << std::endl;
    std::cout << "Email:       s3783428@student.rmit.edu.au" << std::endl;
    std::cout << "----------------------------------" << std::endl;
+   std::cout << "Individual Extension by:" << std::endl;
+   std::cout << "Name:        Guy Witherow" << std::endl;
+   std::cout << "Student ID:  s3783428" << std::endl;
+   std::cout << "Email:       s3783428@student.rmit.edu.au" << std::endl;
+   std::cout << "----------------------------------" << std::endl;
+   SetConsoleTextAttribute(hConsole, FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED);
 }
 
 void printReferenceBoard() {
@@ -403,9 +422,7 @@ void printReferenceBoard() {
       }
       std::cout << std::endl;
    }
-
    std::cout << std::endl << std::endl;
-
    std::cout << "Please make moves using the format 'turn <factory number> <tile color letter> <storage row>" << std::endl << std::endl;
 }
 

@@ -19,7 +19,7 @@ enum class TileType {
    BLACK = 'U',
    FIRST_PLAYER = 'F',
    NO_TILE = '.'
-   };
+};
 
 enum class Direction {
    VERTICAL = 'V',
