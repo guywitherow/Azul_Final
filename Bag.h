@@ -8,14 +8,14 @@
 class Bag
 {
 public:
-   Bag(int seed);
+   Bag();
    ~Bag();
 
    void clear();
 
    int size();
    void fill();
-   void shuffle();
+   void shuffle(int seed);
    void load(std::string data);
    Tile getTopTile();
    std::string getAllTiles();

@@ -1,7 +1,8 @@
 #include "Bag.h"
 #include "LinkedList.h"
 
-Bag::Bag(int seed) {
+
+Bag::Bag() {
    tempLinkedList = new LinkedList();
    bagLinkedList = new LinkedList();
 }
@@ -38,7 +39,7 @@ void Bag::load(std::string data) {
 }
 
 //merhawi's shuffle function
-void Bag::shuffle() {
+void Bag::shuffle(int seed) {
    int min = 0;
    int max = tempLinkedList->getSize();
    int index = -1;
