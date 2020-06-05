@@ -17,6 +17,7 @@ std::string Tile::tileToString() {
 	return tileToString(type);
 }
 
+//returns this tile's type as a string
 std::string Tile::tileToString(TileType givenType) {
 	std::string typeString;
 	if (givenType == TileType::RED) {
@@ -70,6 +71,7 @@ char Tile::tileToChar() {
 	return typeChar;
 }
 
+//static method for interpreting a char as a type
 TileType Tile::charToTile(char givenChar) {
 	TileType typeReturn = TileType::NO_TILE;
 	if (givenChar == 'R') {

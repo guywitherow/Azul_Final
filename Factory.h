@@ -14,7 +14,7 @@ class Factory {
    std::vector<Tile> getTiles();
    void addTile(Tile tile);
    void clearFactory();
-   void printFactory();
+   void toString();
    int getTileCount();
 
    std::string getTilesString();

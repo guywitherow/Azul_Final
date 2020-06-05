@@ -11,6 +11,7 @@ Player::~Player()
 	delete this->wall;
 }
 
+//loads the player's data using a string of data and an ID number
 void Player::load(std::string data, int dataID) {
 	if (dataID == 0) {
 		setName(data);
@@ -56,6 +57,8 @@ void Player::load(std::string data, int dataID) {
 	}
 }
 
+//returns all the player's data as a string
+//depending on what is requested
 std::string Player::getDataString(int dataID) {
 	std::string data = "";
 	if (dataID == 0) {

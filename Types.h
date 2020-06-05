@@ -1,7 +1,10 @@
 #ifndef TYPES_H
 #define TYPES_H
 
-#define NUM_FACTORIES 5
+#define NUM_FACTORIES_2 5
+#define NUM_FACTORIES_3 7
+#define NUM_FACTORIES_4 9
+#define MAX_FACTORIES 9
 #define WALL_DIM 5
 #define FLOOR_DIM 7
 #define TILES_PER_FAC 4

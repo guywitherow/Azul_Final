@@ -5,6 +5,7 @@
 #include <vector>
 #include "Types.h"
 #include "Tile.h"
+#include "Bag.h"
 
 class PlayerWall {
 
@@ -31,7 +32,7 @@ public:
    void setBufferLine(std::vector<Tile>, int line);
    void setWallLine(std::vector<Tile>, int line);
 
-   int moveStorageToWall();
+   int moveStorageToWall(Bag* lid);
 
 private:
    std::vector<Tile> storage[5];

@@ -17,6 +17,8 @@ public:
    void fill();
    void shuffle(int seed);
    void load(std::string data);
+   void fillFromBag(Bag* takeFrom);
+   void addTile(TileType type);
    Tile getTopTile();
    std::string getAllTiles();
 

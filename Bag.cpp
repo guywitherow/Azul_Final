@@ -1,5 +1,4 @@
 #include "Bag.h"
-#include "LinkedList.h"
 
 Bag::Bag() {
 	tempLinkedList = new LinkedList();
@@ -20,6 +19,7 @@ int Bag::size() {
 	return bagLinkedList->getSize();
 }
 
+//returns a string of all the tiles in the bag
 std::string Bag::getAllTiles() {
 	Tile* current = bagLinkedList->getTile(0);
 	std::string returnString = "";
@@ -30,6 +30,7 @@ std::string Bag::getAllTiles() {
 	return returnString;
 }
 
+//adds in each tile in a row from a string character
 void Bag::load(std::string data) {
 	for (unsigned i = 0; i < data.length(); ++i)
 	{
@@ -42,16 +43,18 @@ void Bag::shuffle(int seed) {
 	int min = 0;
 	int max = tempLinkedList->getSize();
 	int index = -1;
-	std::random_device engine;
+	std::default_random_engine generator(seed);
 
 	for (int i = 0; i < max; ++i) {
 		int size = tempLinkedList->getSize() - 1;
 		std::uniform_int_distribution<int> uniform_dist(min, size);
-		index = uniform_dist(engine);
+		index = uniform_dist(generator);
 		tempLinkedList->transferTo(index, bagLinkedList);
 	}
 }
 
+//fill the bag with even amounts of tiles
+//100 total
 void Bag::fill() {
 	for (int i = 0; i < 100; i++) {
 		TileType tileData;
@@ -72,6 +75,16 @@ void Bag::fill() {
 		}
 		tempLinkedList->addBack(tileData);
 	}
+}
+
+void Bag::fillFromBag(Bag* takeFrom) {
+	for (int i = 0; i < takeFrom->size(); i++) {
+		bagLinkedList->addFront(takeFrom->getTopTile().getType());
+	}
+}
+
+void Bag::addTile(TileType type) {
+	bagLinkedList->addFront(type);
 }
 
 //get the backmost tile, or the front
