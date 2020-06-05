@@ -1,0 +1,12 @@
+.default: all
+
+all: azul
+
+clean:
+	rm -f azul *.o
+
+azul: Bag.cpp Factory.cpp Player.cpp PlayerWall.cpp Tile.cpp LinkedList.cpp TileNode.cpp GameEngine.cpp Main.cpp IOClass.cpp
+	g++ -Wall -Werror -std=c++14 -g -O3 -o $@ $^
+
+%.o: %.cpp
+	g++ -Wall -Werror -std=c++14 -g -O3 -c $^

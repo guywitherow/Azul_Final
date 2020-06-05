@@ -1,0 +1,86 @@
+# Game is one turn away from being finished
+# Turn to finish Bob: turn 0 Y 1
+# After this round, Alice has 43 points (get 20 from wall and lose 4 from floor line)
+# and Bob has 24 points (get 13 points from wall and lose 8 points from floor line)
+# Game ends as both Alice completes one row. 
+# Final score for Alice: 62 points (get 2 points from 1 horizontal, 7 from 1 vertical
+# and 10 from 5 tiles of RED, 19 in total)
+# Bob: 31 points (get 7 points from vertical line)
+# Alice wins with more points 
+
+# ---SAVE BEGINS---
+
+2
+1
+
+# Tile Bag
+_
+
+# Lid
+_
+
+# Factories
+....
+....
+....
+....
+....
+
+# Centre of Table
+Y
+
+# --- Player 1 ---
+
+# Name
+Alice
+
+
+# Pattern Lines
+Y
+UU
+...
+....
+RRRRR
+
+# Wall
+B.RUL
+..YR.
+.LB.R
+R...Y
+....B
+
+# Floor Line
+FYU
+
+
+# Score
+27
+
+# --- Player 2 ---
+
+# Name
+Bob
+
+
+
+# Pattern Lines
+.
+..
+LLL
+LL..
+UUUUU
+
+# Wall
+B...L
+LB..U
+U..Y.
+R..B.
+Y....
+
+# Floor Line
+BBLBB
+
+# Score
+19
+
+# ---SAVE ENDS---

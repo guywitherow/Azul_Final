@@ -1,0 +1,86 @@
+#blank lines are skipped
+#lines starting with a # are skipped
+#dots are an "no-tile" object
+#an identifier (text that isnt a comment) is followed by
+
+
+#number of players
+2
+
+#number of table
+1
+
+#bag
+_
+
+#lid (empty lid represented by a _?)
+_
+
+#factories
+#can be up to 4 * 4 = 16 tiles
+#always starts with a First player Tile
+
+# factory1
+....
+# factory2
+....
+# factory3
+....
+# factory4
+....
+# factory5
+....
+
+#table
+_
+
+# player 1
+examplename
+1
+#player buffer
+.
+..
+...
+....
+.....
+
+#wall
+
+.....
+.....
+.....
+.....
+.....
+
+#floor
+.......
+
+#current score
+0
+
+#player 2
+name
+player_id
+#player buffer
+.
+..
+...
+....
+.....
+
+#wall
+
+.....
+.....
+.....
+.....
+.....
+
+#floor
+.......
+
+#current score
+0
+
+#current player turn
+2000
