@@ -3,6 +3,13 @@
 #dots are an "no-tile" object
 #an identifier (text that isnt a comment) is followed by
 
+
+#number of players
+2
+
+#number of table
+1
+
 #bag
 _
 

@@ -88,6 +88,45 @@ Tile* PlayerWall::getFloorLine() {
 
 //return a string representation for printing of the buffer, wall and floor
 //as shown in the documentation
+std::string PlayerWall::getPlayerWallString(int i) {
+	std::string returnString = "";
+	if (i < WALL_DIM) {
+		returnString += std::to_string(i);
+		returnString += ":";
+		//get data
+		std::vector<Tile> bufferLine = getStorageLine(i);
+		Tile* wallLine = getWallLine(i, Direction::HORIZONTAL);
+
+		//construct string
+		for (int j = i; j < 5; j++) {
+			returnString += " ";
+		}
+
+		for (std::size_t i = 0; i < bufferLine.size(); ++i) {
+			returnString += bufferLine.at(i).tileToChar();
+		}
+		returnString += " || ";
+
+		std::string wallLineString = "";
+		for (int j = 0; j < WALL_DIM; j++) {
+			returnString += wallLine[j].tileToChar();
+		}
+
+		returnString += wallLineString;
+	}
+	else {
+		std::string floor = "";
+
+		Tile* floorTiles = getFloorLine();
+
+		returnString += "broken: ";
+		for (int j = 0; j < 7; j++) {
+			returnString += floorTiles[j].tileToChar();
+		}
+	}
+	return returnString;
+}
+
 std::string PlayerWall::getPlayerWallString() {
 	std::string returnString = "";
 	for (int i = 0; i < WALL_DIM; i++) {
@@ -129,24 +168,17 @@ std::string PlayerWall::getPlayerWallString() {
 	return returnString;
 }
 
-//add tiles to storage line from a factory, any excess go to the floor
+//add tiles to storage line, any excess go to the floor
 void PlayerWall::addToStorageLine(TileType type, int count, int line) {
 	int currentTilesOnBuffer = 0;
 	TileType typeOnLine = TileType::NO_TILE;
-	//we can only add as many tiles as we have space on the wall
 	for (int j = 0; j < line + 1; j++) {
-		//if there is already a tile type in a buffer line, record that
-		//type and increase the number of tiles on the line
 		if (storage[line].at(j).getType() != TileType::NO_TILE) {
 			currentTilesOnBuffer++;
 			typeOnLine = storage[line].at(j).getType();
 		}
 	}
-	//if we have the correct type of tiles to place on,
-	//or if there are no tiles already on the line
 	if (type == typeOnLine || typeOnLine == TileType::NO_TILE) {
-		//while we can add tiles to the buffer, add them
-		//if we have to many on the buffer, move to floor
 		for (int i = 0; i < count; i++) {
 			if (currentTilesOnBuffer > line) {
 				addToFloorLine(type, 1);
@@ -157,13 +189,14 @@ void PlayerWall::addToStorageLine(TileType type, int count, int line) {
 		}
 	}
 	else {
-		//if we cant fit any of the tiles on the wall, all on
-		//the floor
 		for (int i = 0; i < count; i++) {
 			addToFloorLine(type, 1);
 		}
 	}
+
+
 }
+
 
 //adds tiles of a type to the floor
 void PlayerWall::addToFloorLine(TileType type, int count) {
@@ -329,6 +362,11 @@ int PlayerWall::checkScore(int y, int x) {
 				}
 			}
 		}
+		//if we just saw the tile, dont give the player a streak
+		if (streak == 1) {
+			streak = 0;
+		}
+
 		//add the streak to the score
 		score += streak;
 		loopNum++;

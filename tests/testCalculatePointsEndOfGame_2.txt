@@ -10,7 +10,13 @@
 
 # ---SAVE BEGINS---
 
+2
+1
+
 # Tile Bag
+_
+
+# Lid
 _
 
 # Factories

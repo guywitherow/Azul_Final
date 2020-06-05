@@ -14,6 +14,7 @@ public:
    void clear();
 
    int size();
+   void empty();
    void fill();
    void shuffle(int seed);
    void load(std::string data);

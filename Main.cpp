@@ -4,6 +4,7 @@
 #include <string>
 #include <time.h>
 #include <cstdlib>
+#include <cstring>
 #include <iterator>
 #include "Player.h"
 #include "Factory.h"
@@ -11,7 +12,6 @@
 #include "Tile.h"
 #include "Bag.h"
 #include "GameEngine.h"
-#include <vld.h>
 
 //used to handle the main game loop
 void game(int seed, bool load);
@@ -29,11 +29,10 @@ int main(int argc, char const* argv[])
 
 		//handle input
 		if (input == "1") {
-			bool valid = true;
 			int seed = 0;
 			//new game
 			if (argc == 3) {
-				if (argv[1] == "-s") {
+				if (std::strcmp(argv[1],"-s") == 0){
 					try {
 						seed = atoi(argv[2]);
 					}
@@ -42,10 +41,13 @@ int main(int argc, char const* argv[])
 					}
 
 					srand(seed);
+					seed = rand();
+					game(seed, false);
 
 				}
 				else {
-					std::cout << "Argument available: -s <seed>";
+					std::cout << "Arguments available: -s <seed>. The seed or argument flag is invalid" 
+					<< " and will not be used." << std::endl;
 				}
 
 			}
@@ -53,10 +55,11 @@ int main(int argc, char const* argv[])
 				//generate a random seed
 				// srand(time(0));
 				srand(1);
+				seed = rand();
+				game(seed, false);
 			}
 
-			seed = rand();
-			game(seed, false);
+			
 		}
 		else if (input == "2") {
 			//load game
@@ -127,17 +130,6 @@ void game(int seed, bool load) {
 			}
 		}
 
-		int factoryCount = 0;
-
-		if (playerCount == 2) {
-			factoryCount = NUM_FACTORIES_2;
-		}
-		else if (playerCount == 3) {
-			factoryCount = NUM_FACTORIES_3;
-		}
-		else {
-			factoryCount = NUM_FACTORIES_4;
-		}
 		gameEngine = new GameEngine(playerCount, tablesCount);
 	}
 	//if we are loading, open the file and load
@@ -147,6 +139,8 @@ void game(int seed, bool load) {
 		if (turn == -1) {
 			load = false;
 			std::cout << "Load Failed. Starting a fresh game." << std::endl << std::endl;
+			gameEngine->reset();
+			gameEngine->setLoaded(false);
 		}
 		else {
 			std::cout << "Loaded" << std::endl << std::endl;

@@ -7,8 +7,14 @@
 
 # ---SAVE BEGINS---
 
+2
+1
+
 # Tile Bag
 ULULRLYLBYRYBULRYURRLRLLLYUBLBLRBUBYRYUU
+
+# Lid
+_
 
 # Factories
 ....

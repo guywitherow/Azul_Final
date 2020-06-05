@@ -14,6 +14,10 @@ void Bag::clear() {
 	delete bagLinkedList;
 }
 
+void Bag::empty() {
+	bagLinkedList->clear();
+}
+
 //how many tiles left?
 int Bag::size() {
 	return bagLinkedList->getSize();
@@ -21,21 +25,31 @@ int Bag::size() {
 
 //returns a string of all the tiles in the bag
 std::string Bag::getAllTiles() {
-	Tile* current = bagLinkedList->getTile(0);
 	std::string returnString = "";
-	for (int i = 0; i < size(); i++) {
-		current = bagLinkedList->getTile(i);
-		returnString += current->tileToChar();
+	if (size() == 0) {
+		returnString = "_";
+	}
+	else {
+		Tile* current = bagLinkedList->getTile(0);
+		for (int i = 0; i < size(); i++) {
+			current = bagLinkedList->getTile(i);
+			returnString += current->tileToChar();
+		}
 	}
 	return returnString;
 }
 
 //adds in each tile in a row from a string character
 void Bag::load(std::string data) {
-	for (unsigned i = 0; i < data.length(); ++i)
-	{
-		bagLinkedList->addBack(Tile::charToTile(data.at(i)));
+
+	//an underscore represents an empty bag
+	if (data != "_") {
+		for (unsigned i = 0; i < data.length(); ++i)
+		{
+			bagLinkedList->addBack(Tile::charToTile(data.at(i)));
+		}
 	}
+	
 }
 
 //merhawi's shuffle function
@@ -78,8 +92,14 @@ void Bag::fill() {
 }
 
 void Bag::fillFromBag(Bag* takeFrom) {
-	for (int i = 0; i < takeFrom->size(); i++) {
-		bagLinkedList->addFront(takeFrom->getTopTile().getType());
+	if (takeFrom != nullptr) {
+		for (int i = 0; i < takeFrom->size(); i++) {
+			Tile topTile = takeFrom->getTopTile();
+			if (topTile.getType() != TileType::FIRST_PLAYER) {
+				bagLinkedList->addFront(takeFrom->getTopTile().getType());
+			}
+		}
+		takeFrom->clear();
 	}
 }
 

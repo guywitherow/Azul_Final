@@ -7,6 +7,7 @@
 #include "Player.h"
 #include "Factory.h"
 #include <fstream>
+#include <ios>
 #include "IOClass.h"
 
 class GameEngine {
@@ -37,6 +38,7 @@ class GameEngine {
       int loadGame();
       void saveGame(std::string saveName);
 
+      void reset();
    private:
       std::vector<Player*> players;
       Factory* factories[MAX_FACTORIES];
@@ -47,6 +49,7 @@ class GameEngine {
       bool isLoaded = false;
       int turn = 0;
       int factoryCount = 0;
+      int tableCount = 0;
 };
 
 #endif

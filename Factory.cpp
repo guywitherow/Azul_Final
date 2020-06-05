@@ -1,4 +1,4 @@
-#include <iostream>
+
 #include "Factory.h"
 
 Factory::Factory() {
@@ -52,6 +52,26 @@ int Factory::removeTile(TileType type) {
 void Factory::addTile(Tile tile) {
 	tiles.push_back(tile);
 	tileCount++;
+}
+
+//basic bubble sort to make the factories more readable
+void Factory::sortFactory() {
+	int size = (int)tiles.size();
+	Tile temp;
+
+	bool sorted = false;
+	while (!sorted) {
+		sorted = true;
+		for (int i = 0; i < size - 1; i++) {
+			if (tiles.at(i).tileToChar() > tiles.at(i + 1).tileToChar() 
+				&& tiles.at(i).tileToChar() != 'F') {
+				temp = tiles.at(i);
+				tiles.at(i) = tiles.at(i + 1);
+				tiles.at(i + 1) = temp;
+				sorted = false;
+			}
+		}
+	}
 }
 
 void Factory::clearFactory() {

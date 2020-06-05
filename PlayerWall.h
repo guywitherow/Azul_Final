@@ -25,6 +25,7 @@ public:
    bool checkWallLineForType(int line, TileType type);
    bool checkIfDone();
 
+   std::string getPlayerWallString(int i);
    std::string getPlayerWallString();
    void addToStorageLine(TileType type, int count, int line);
    void addToFloorLine(TileType type, int count);

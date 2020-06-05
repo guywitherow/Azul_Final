@@ -10,6 +10,7 @@
 #include "Tile.h"
 #include "Player.h"
 #include "Factory.h"
+#include "Types.h"
 
 class IOClass {
 
@@ -22,10 +23,10 @@ class IOClass {
       //prints a reference board for the player
       static void printReferenceBoard();
       //prints factories for the board, given pointers to these objects
-      static void printFactories(Factory** factories, int factoriesSize, std::vector<Factory*> tables);
+      static void printFactories(Factory** factories, int factoriesSize, std::vector<Factory*> tables, int tableCount);
       //print's a players wall, given that player
+      static void printPlayerWall(std::vector<Player*> players, int currentPlayer);
       static void printPlayerWall(Player* player);
-
 
       static std::vector<std::string> takeUserInput();
    private:

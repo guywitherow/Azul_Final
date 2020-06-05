@@ -12,13 +12,14 @@ Tile::~Tile() {
 	//tile only has tiletype which is a char, automaticlly deleted
 }
 
+
 //prints a string of the given tile
 std::string Tile::tileToString() {
-	return tileToString(type);
+	return typeToString(type);
 }
 
 //returns this tile's type as a string
-std::string Tile::tileToString(TileType givenType) {
+std::string Tile::typeToString(TileType givenType) {
 	std::string typeString;
 	if (givenType == TileType::RED) {
 		typeString = "Red";

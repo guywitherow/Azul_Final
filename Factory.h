@@ -3,6 +3,8 @@
 
 
 #include <vector>
+#include <iostream>
+#include <algorithm>
 #include "Tile.h"
 
 class Factory {
@@ -16,6 +18,7 @@ class Factory {
    void clearFactory();
    void toString();
    int getTileCount();
+   void sortFactory();
 
    std::string getTilesString();
 

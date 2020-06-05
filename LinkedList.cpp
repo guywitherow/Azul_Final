@@ -19,6 +19,9 @@ void LinkedList::clear() {
 			delete current;
 		}
 	}
+	this->head = nullptr;
+	this->tail = nullptr;
+	this->transferTemp = nullptr;
 }
 
 int LinkedList::getSize() {
@@ -29,10 +32,18 @@ int LinkedList::getSize() {
 	}
 	else {
 		TileNode* current = head;
-		while (current != nullptr) {
-			current = current->getNextTileNode();
-			size = size + 1;
+		if (current->getTileData() == nullptr) {
+			size = 1;
 		}
+		else {
+			while (current) {
+				current = current->getNextTileNode();
+				size = size + 1;
+			}
+		}
+		
+
+
 	}
 	return size;
 }
@@ -172,7 +183,7 @@ TileType LinkedList::transferBack() {
 	TileType tileToTransfer = TileType::NO_TILE;
 
 	TileNode* end = tail;
-	if (tail != nullptr) {
+	if (tail != nullptr && tail != head) {
 		TileNode* current = head;
 		while (current->getNextTileNode() != tail) {
 			current = current->getNextTileNode();
